@@ -1,0 +1,38 @@
+<apex:page showHeader="true" sidebar="true" controller="myObj">
+	<apex:form >
+                <apex:pageBlock title="myObj Preferences">
+                        <apex:pageBlockButtons >
+                                <apex:commandButton action="{!save}" value="Save myObject"/>
+                                 <apex:commandButton action="{!clear}" value="clear"/>
+                               
+                        </apex:pageBlockButtons>
+                        <apex:pageBlockSection columns="2" title="General Information" collapsible="false">
+                                <apex:inputField id="name" value="{!myObj.name}"/>    
+                                <apex:inputField id="seasons" value="{!myObj.seasons__c}"/> 
+                                <apex:inputField id="Fname" value="{!myObj.contact__r.firstname}"/>                           
+                        </apex:pageBlockSection>
+
+                        <apex:pageBlockSection columns="2" title="InfoII...." collapsible="false">
+                        	<apex:inputField id="serial" value="{!myObj.serailNo__c}"/>
+                        	<apex:inputField id="active" value="{!myObj.active__c}"/>
+                        </apex:pageBlockSection>
+                       
+                </apex:pageBlock>
+
+                <apex:pageBlock title="Details....">
+
+                 <apex:pageBlockButtons >
+                                <apex:commandButton action="{!addChild}" value="Add Child"/>
+                                 <apex:commandButton action="{!clear}" value="clear Child"/>
+                               
+                        </apex:pageBlockButtons>
+
+                 <apex:pageBlockTable value="{!mydetalList}" var="a">
+                                <apex:column headerValue="{!$ObjectType.myObjDetails__c.fields.name.label}">
+                                        <apex:inputField value="{!a.name}"/>
+                                </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlock>
+               
+        </apex:form>
+</apex:page>
